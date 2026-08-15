@@ -1,0 +1,36 @@
+# Personal values — rendered at /values and previewed on the Home page.
+# `order` controls the display order on the page.
+
+- order: 1
+  title: There is no greater good, do good today
+  description: >-
+    All the worst crimes in the world have been done because of someone
+    justifying it as it's for the greater good.
+
+- order: 2
+  title: Give more than you take
+  description: >-
+    This applies to business, freelancing, love and every aspect of life. By
+    doing this there's no way you cannot succeed.
+
+- order: 3
+  title: There is no talent, everything is a skill
+  description: >-
+    You can learn anything if you care enough and practice hard enough.
+
+- order: 4
+  title: Have that dawg in you
+  description: >-
+    You think you have a skill issue, but you just ain't got that dawg in you.
+
+- order: 5
+  title: See things as they are
+  description: >-
+    There is no need to dive deeper or find complex reasoning. Face value
+    meanings are great. Closure is unnecessary.
+
+- order: 6
+  title: Nobody is self-made
+  description: >-
+    You were literally created by your parents and you owe everything to your
+    teachers, friends and family.

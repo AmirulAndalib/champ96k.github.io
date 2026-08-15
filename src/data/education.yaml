@@ -1,0 +1,26 @@
+# Education — rendered on the About page, newest first (sorted by `start`).
+
+- institution: Savitribai Phule Pune University
+  degree: Bachelor of Engineering
+  field: Computer Engineering
+  college: Sandip Institute of Engineering and Management, Nashik
+  start: 2016
+  end: 2021
+  image: /logos/SIEM.png
+  description: >-
+    Completed Bachelor's of Engineering in Computer Engineering from Sandip
+    Institute of Engineering and Management, Nashik (Savtribai Phule Pune
+    University). Focus on software engineering fundamentals, data structures,
+    algorithms, databases, operating systems and computer networks, with a
+    strong hands-on streak (self-taught Flutter, started open source here).
+
+# - institution: S.S.G.M College, Kopargaon
+#   degree: Higher Secondary Certificate (HSC)
+#   field: Science (Physics, Chemistry, Mathematics, Biology)
+#   college: S.S.G.M College, Kopargaon
+#   start: 2014
+#   end: 2016
+#   image: /logos/ssgm.png
+#   description: >-
+#     Higher Secondary Certificate in Science with Physics, Chemistry,
+#     Mathematics and Biology from S.S.G.M College, Kopargaon.

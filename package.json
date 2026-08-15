@@ -1,0 +1,33 @@
+{
+  "name": "champ96k.com",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Tushar Nikam — personal corner of the internet: projects, open source, writing, values and career.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test:pages": "node scripts/dom-check.mjs",
+    "sync:github": "tsx scripts/sync-github.ts"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^7.0.5",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.2.2",
+    "yaml": "^2.9.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/node": "^24.0.0",
+    "dotenv": "^17.0.0",
+    "playwright": "^1.62.1",
+    "tsx": "^4.23.12",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

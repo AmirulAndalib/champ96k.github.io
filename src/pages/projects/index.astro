@@ -1,0 +1,79 @@
+---
+import Base from '@/layouts/Base.astro';
+import ProjectListRow from '@/components/ProjectListRow.astro';
+import { getCollection } from 'astro:content';
+import { sortByDateDesc, dateParts, formatMonthLong } from '@/lib/date';
+import type { Project } from '@/types';
+
+const projectEntries = (await getCollection('projects')).map(
+  (e) => e.data as unknown as Project
+);
+const projects = sortByDateDesc(projectEntries);
+
+interface ProjectWithParts extends Project {
+  year: number;
+  month: number;
+}
+
+const withParts: ProjectWithParts[] = projects.flatMap((p) => {
+  const parts = dateParts(p.date);
+  return parts ? [{ ...p, year: parts.year, month: parts.month }] : [];
+});
+
+// Group by year, then month, newest first.
+const years: { year: number; months: { month: number; projects: ProjectWithParts[] }[] }[] = [];
+for (const project of withParts) {
+  let yearGroup = years.find((y) => y.year === project.year);
+  if (!yearGroup) {
+    yearGroup = { year: project.year, months: [] };
+    years.push(yearGroup);
+  }
+  let monthGroup = yearGroup.months.find((m) => m.month === project.month);
+  if (!monthGroup) {
+    monthGroup = { month: project.month, projects: [] };
+    yearGroup.months.push(monthGroup);
+  }
+  monthGroup.projects.push(project);
+}
+years.sort((a, b) => b.year - a.year);
+for (const year of years) year.months.sort((a, b) => b.month - a.month);
+---
+
+<Base
+  title="Projects"
+  description="Things Tushar personally built, apps, websites, libraries, tools and experiments."
+  path="/projects"
+>
+  <section class="page-head">
+    <h1>Projects</h1>
+    <p class="lead">
+      Things I built apps, websites, libraries, tools and experiments.
+      Every project is dated and sorted newest first.
+    </p>
+    <p class="meta">Projects I personally built · {projects.length} total</p>
+  </section>
+
+  {years.length === 0 ? (
+    <p class="muted">No projects yet.</p>
+  ) : (
+    years.map((year) => (
+      <section style="margin-bottom:2.5rem">
+        <h2 class="section-title">{year.year}</h2>
+        {year.months.map((month) => (
+          <div style="margin-bottom:1.75rem">
+            <p class="meta month-heading">
+              {formatMonthLong(`${year.year}-${String(month.month).padStart(2, '0')}`)}
+            </p>
+            <div class="entry-list">
+              {
+                month.projects.map((project) => (
+                  <ProjectListRow project={project} />
+                ))
+              }
+            </div>
+          </div>
+        ))}
+      </section>
+    ))
+  )}
+</Base>

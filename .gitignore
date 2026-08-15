@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Astro
+.astro/
+dist/
+output/
+netlify/
+.vercel/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# System / editor
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+.idea/
+.vscode/
+!.vscode/launch.json
+
+# Flutter legacy (kept in git history only)
+build/
+.dart_tool/
+.packages
+pubspec.lock

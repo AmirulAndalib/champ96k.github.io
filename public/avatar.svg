@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Profile placeholder">
+  <rect width="200" height="200" fill="#f5f2ec"/>
+  <circle cx="100" cy="100" r="88" fill="#e5e0d5" stroke="#d8d1c3" stroke-width="2"/>
+  <text x="100" y="116" font-family="Georgia, 'Times New Roman', serif" font-size="64" text-anchor="middle" fill="#9a9185">TN</text>
+</svg>

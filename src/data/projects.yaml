@@ -1,0 +1,211 @@
+# All projects Tushar personally built, newest first is automatic (sorted by `date`).
+# Add a new project by appending an entry; the sites sorts everything itself.
+#
+# Fields (all optional except `id`, `title`, `date`):
+#   id, title, description, date (YYYY-MM-DD), type, tags[], image, url,
+#   github, status, technologies[], overview, what_i_built[], links[]
+# The detail page only renders the sections that are present.
+#
+# `date` is the date the project was created (its repo's creation date), so the
+# timeline reflects when the work started.
+
+- id: project-1947
+  title: Project 1947
+  description: >-
+    A digital library of Indian newspapers from 15 August 1947, the day India
+    gained its independence, so you can read history exactly as it was
+    reported.
+  date: 2026-08-14
+  type: Website
+  tags: [TypeScript, Web, Archive]
+  url: https://15aug1947.netlify.app/
+  github: https://github.com/champ96k/15-agu-1947-archive
+  status: Active
+  overview: >-
+    A digital library of Indian newspapers from 15 August 1947, the day India
+    gained its independence. It lets history lovers read what people actually
+    saw and read on that day, straight from the original pages.
+
+- id: let-me-think
+  title: Let Me Think
+  description: A tiny tool that pauses you before you send, so you don't send a
+    message you'll later regret.
+  date: 2026-08-10
+  type: Website
+  tags: [Web, Tool]
+  url: https://letmethink.champ96k.com/
+  status: Live
+  overview: >-
+    A tiny tool that pauses you before you send a message. It asks you to take
+    a breath and reconsider, so a quick reaction doesn't turn into a regretful
+    reply.
+
+- id: tokenbar
+  title: Tokenbar
+  description: >-
+    A macOS menu bar app that shows your AI usage, cost and remaining credits
+    at a glance, so you never have to open the provider dashboard.
+  date: 2026-07-12
+  type: App
+  tags: [macOS, AI, Tool]
+  github: https://github.com/champ96k/Tokenbar
+  status: Active
+  technologies: [Swift, macOS]
+  overview: >-
+    A small app that lives in the menu bar of your Mac. It shows how much of
+    your AI service allowance you have used, how much it has cost you, and
+    what's left, without you ever needing to open the provider's dashboard.
+
+- id: openalgo
+  title: OpenAlgo
+  description: >-
+    A practice platform for strengthening your algorithms and problem-solving
+    skills, the kind of thinking used in software interviews.
+  date: 2026-06-04
+  type: Website
+  tags: [JavaScript, DSA, Web]
+  url: https://openalgo-io.netlify.app/
+  github: https://github.com/champ96k/OpenAlgo
+  status: Live
+  overview: >-
+    A practice ground for people learning algorithms and problem solving, the
+    kind of skills used in software job interviews. You solve problems and get
+    instant feedback on whether your solution works, like a coach sitting next
+    to you.
+
+- id: peakfit
+  title: PeakFit
+  description: >-
+    A fitness and nutrition app that gives you structured training and eating
+    plans without needing a personal trainer.
+  date: 2026-05-17
+  type: App
+  tags: [Fitness, TypeScript, Web]
+  url: https://peakfit.champ96k.com
+  github: https://github.com/champ96k/peak-fit-elevate
+  status: Live
+  links:
+    - label: App Store
+      url: https://apps.apple.com/app/id6777769375
+    - label: Play Store
+      url: https://play.google.com/store/apps/details?id=com.champ96k.peakfit
+  overview: >-
+    A fitness companion for people who want a structured workout and meal plan
+    without hiring a personal trainer. It guides you through exercises and
+    eating habits at your own level and pace.
+
+- id: contest-hub
+  title: Contest Hub
+  description: >-
+    A hub that tracks programming contests across platforms, so you never miss
+    a competition you want to take part in.
+  date: 2026-01-23
+  type: Website
+  tags: [JavaScript, Web]
+  url: https://contesthub.labs.champ96k.com/
+  github: https://github.com/champ96k/contest_hub_website
+  status: Live
+  links:
+    - label: Play Store
+      url: https://play.google.com/store/apps/details?id=com.champ96k.labs.contesthub
+  overview: >-
+    A single place that gathers coding competitions from many platforms and
+    shows you their dates and times in one feed, so you never miss a chance to
+    take part.
+
+- id: champ96k-labs
+  title: Champ96k Labs
+  description: >-
+    The companion site for my lab experiments, small tools and toys built to
+    test an idea quickly, hosted and kept alive.
+  date: 2026-01-22
+  type: Website
+  tags: [TypeScript, Web]
+  url: https://labs.champ96k.com
+  github: https://github.com/champ96k/champ96k_labs_website
+  status: Live
+  overview: >-
+    A home for small experiments and toys. It's the corner of the internet
+    where quick ideas get built, hosted and kept alive, so each one has a place
+    to live and be shared.
+
+- id: triple-ledger-x
+  title: Trip Ledger
+  description: >-
+    A simple tracker for office trip reimbursements, so you can log expenses
+    and get your money back without confusion.
+  date: 2025-12-20
+  type: Tool
+  tags: [TypeScript, Web]
+  url: https://tripledger.labs.champ96k.com/
+  github: https://github.com/champ96k/office-trip-reimbursement
+  status: Live
+  overview: >-
+    A simple log for tracking office trip expenses. When you travel for work,
+    it keeps a record of what you spent so you can get your money back without
+    any confusion.
+
+- id: focusmatrix
+  title: FocusMatrix
+  description: >-
+    A focus and time-blocking tool that plans your day around what matters, so
+    you actually finish what you started.
+  date: 2025-10-08
+  type: Tool
+  tags: [TypeScript, Web]
+  url: https://focusmatrix.labs.champ96k.com/
+  github: https://github.com/champ96k/FocusMatrix
+  status: Live
+  overview: >-
+    A planning tool that helps you build your day around what really matters.
+    Instead of a never-ending to-do list, it divides your time into focused
+    blocks so you actually finish what you started.
+
+- id: quantadb
+  title: QuantaDB
+  description: >-
+    A high-performance NoSQL database built entirely in Dart that lets apps
+    store and query data locally, right on the device.
+  date: 2025-05-17
+  type: Library
+  tags: [Dart, Flutter, Database]
+  url: https://quantadb.netlify.app/
+  github: https://github.com/champ96k/quanta_db
+  status: Open Source
+  technologies: [Dart, Dart FFI]
+  overview: >-
+    A fast way for apps to store and find their own data on the device, without
+    needing an internet connection or a central server. Think of it as a
+    personal filing cabinet that lives entirely inside your phone.
+
+- id: ai-code-review
+  title: AI Code Review Action
+  description: >-
+    An AI-powered GitHub action that reviews your pull requests and flags
+    issues automatically before code goes live.
+  date: 2025-03-03
+  type: Tool
+  tags: [GitHub Actions, AI, Python]
+  github: https://github.com/champ96k/ai-code-review-action
+  status: Open Source
+  technologies: [Python, GitHub Actions]
+  overview: >-
+    A helper that checks software code automatically whenever a developer
+    submits changes, like a second reviewer who never sleeps. It flags likely
+    mistakes and suggests improvements before the changes go live.
+
+- id: ui-color-picker
+  title: UI Color Picker
+  description: >-
+    A lightweight color picker with a palette, color input and a color button,
+    with no extra dependencies.
+  date: 2022-04-15
+  type: Library
+  tags: [Dart, Flutter, UI]
+  url: https://ui-color-picker-50342.web.app/#/
+  github: https://github.com/champ96k/ui_color_picker
+  status: Open Source
+  overview: >-
+    A tiny tool for choosing colors while designing an app or webpage. It gives
+    you a palette and a color input in one simple, fast place, with nothing
+    extra weighing it down.

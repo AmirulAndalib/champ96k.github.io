@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import { SITE_NAME } from '@/lib/site';
+import { formatYear } from '@/lib/date';
+import type { SocialEntry } from '@/types';
+
+const socialEntries = await getCollection('social');
+const socials = socialEntries
+  .map((e) => e.data as unknown as SocialEntry)
+  .filter((s) => s && s.url);
+
+const nav = [
+  { label: 'Home', href: '/' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Open Source', href: '/open-source' },
+  { label: 'Writing', href: '/writing' },
+  { label: 'Values', href: '/values' },
+  { label: 'About', href: '/about' },
+];
+---
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <span class="wordmark">{SITE_NAME}</span>
+
+    <nav class="site-footer-nav" aria-label="Footer">
+      {
+        nav.map((item) => <a href={item.href}>{item.label}</a>)
+      }
+    </nav>
+
+    <nav class="site-footer-nav" aria-label="Social">
+      {
+        socials.map((social) => (
+          <a href={social.url} rel="me noopener" target="_blank">
+            {social.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <p class="site-footer-meta">
+      © {formatYear(new Date().toISOString())} {SITE_NAME} · Designed &amp; built by me ·{' '}
+      <a href="/rss.xml">RSS</a>
+    </p>
+  </div>
+</footer>

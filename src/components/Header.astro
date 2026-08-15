@@ -1,0 +1,44 @@
+---
+const nav = [
+  { label: 'Home', href: '/' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Open Source', href: '/open-source' },
+  { label: 'Writing', href: '/writing' },
+  { label: 'Values', href: '/values' },
+  { label: 'About', href: '/about' },
+];
+
+// Determine which page is active from the pathname, matching the first segment.
+function isActive(href: string): boolean {
+  const { pathname } = Astro.url;
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+---
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <nav class="site-nav" style="margin-right: auto" aria-label="Primary">
+      {
+        nav.map((item) => (
+          <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <details class="nav-toggle">
+      <summary aria-label="Toggle navigation">Menu</summary>
+      <nav class="nav-menu" aria-label="Primary">
+        {
+          nav.map((item) => (
+            <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </details>
+  </div>
+</header>

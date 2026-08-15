@@ -1,0 +1,23 @@
+---
+import { formatDate } from '@/lib/date';
+import Tags from '@/components/Tags.astro';
+import type { WritingPost } from '@/types';
+
+interface Props {
+  post: WritingPost;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="entry">
+  <time class="entry-date" datetime={post.date}>{formatDate(post.date)}</time>
+  <div class="entry-main">
+    <h3 class="entry-title">
+      <a href={`/writing/${post.id}`}>{post.title}</a>
+    </h3>
+    <p class="entry-meta">{post.type}</p>
+    {post.description && <p class="entry-desc">{post.description}</p>}
+    {post.tags && post.tags.length > 0 && <div style="margin-top:.4rem"><Tags tags={post.tags} /></div>}
+  </div>
+</article>

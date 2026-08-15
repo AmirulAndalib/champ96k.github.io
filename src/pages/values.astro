@@ -1,0 +1,35 @@
+---
+import Base from '@/layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import type { Value } from '@/types';
+
+const values = (await getCollection('values'))
+  .map((entry) => entry.data as unknown as Value)
+  .filter((v) => v.title)
+  .sort((a, b) => a.order - b.order);
+---
+
+<Base
+  title="Values"
+  description="The principles Tushar Nikam tries to live and build by."
+  path="/values"
+>
+  <section class="page-head">
+    <h1>Values</h1>
+    <p class="lead">
+      Not quotes. These are the principles I actually try to live and build by.
+    </p>
+  </section>
+
+  <section>
+    {values.map((value) => (
+      <div class="value">
+        <span class="value-index">{String(value.order).padStart(2, '0')}</span>
+        <div>
+          <h2 class="value-title">{value.title}</h2>
+          {value.description && <p class="value-desc">{value.description}</p>}
+        </div>
+      </div>
+    ))}
+  </section>
+</Base>

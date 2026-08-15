@@ -1,0 +1,58 @@
+---
+import { formatMonthYear } from '@/lib/date';
+import Tags from '@/components/Tags.astro';
+import type { Project } from '@/types';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const links: { label: string; url: string }[] = [];
+if (project.url) links.push({ label: 'Live', url: project.url });
+if (project.github) links.push({ label: 'Source', url: project.github });
+if (project.links) links.push(...project.links);
+const thumb = project.image ?? '/logo-placeholder.svg';
+
+const storeIcon = (label: string) => {
+  const lower = label.toLowerCase();
+  if (lower.includes('play')) {
+    return `<svg class="store-ico" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 2.7v18.6c0 .37.3.67.67.67.14 0 .27-.04.38-.11l9.54-6.77-1.71-1.71L3.2 2.1a.67.67 0 0 0-.2.6z"/><path d="M21.03 10.83 16.9 8.25l-3.09 3.09 1.5 1.5 4.56 3.23c.26.19.62.22.95.05V11.1a.94.94 0 0 0 .21-.26z"/><path d="m12.54 14.04-1.24 1.24 6.7 4.75c.26.18.62.22.96.04-6.42 1.01-6.42 1.01-6.42 1.01z"/><path d="M2.2 19.93a.67.67 0 0 0 1.03.57l1.14-1.14 1.18-1.18-1.06-1.06L2.2 19.93z"/><path d="m5.44 15.13-1.21 1.2-1.06-1.06L2.2 19.93l1.03-.59 2.83-2.83-1.24-1.25 1.86-1.85-1.24-1.25z"/></svg>`;
+  }
+  if (lower.includes('app')) {
+    return `<svg class="store-ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9z"/><path d="M3.6 12a8.4 8.4 0 0 1 16.8 0"/><path d="M12 3v4"/><path d="M9 3h6"/></svg>`;
+  }
+  return '';
+};
+---
+
+<article class="entry project-entry">
+  <div class="entry-side">
+    <time class="entry-date" datetime={project.date}>{formatMonthYear(project.date)}</time>
+    <img class="entry-thumb" src={thumb} alt="" width="56" height="56" loading="lazy" aria-hidden="true" />
+  </div>
+  <div class="entry-main">
+    <h3 class="entry-title">
+      <a href={`/projects/${project.id}`}>{project.title}</a>
+    </h3>
+    <p class="entry-meta">
+      {[project.type, project.status].filter(Boolean).join(' · ')}
+    </p>
+    {project.description && <p class="entry-desc">{project.description}</p>}
+    <div class="project-links">
+      {
+        links.map((link) => (
+          storeIcon(link.label)
+            ? <span class="store-link-wrap"><a class="store-link" href={link.url} target="_blank" rel="noopener"><span class="store-ico" set:html={storeIcon(link.label)} /><span>{link.label}</span><svg class="store-ext" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a></span>
+            : <a href={link.url} target="_blank" rel="noopener">{link.label} ↗</a>
+        ))
+      }
+      <a class="project-more" href={`/projects/${project.id}`}>
+        Details →
+      </a>
+    </div>
+    {project.tags && project.tags.length > 0 && (
+      <div style="margin-top:.6rem"><Tags tags={project.tags} /></div>
+    )}
+  </div>
+</article>
