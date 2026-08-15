@@ -15,9 +15,9 @@ But stepping into Gojek's world of massive-scale native Android engineering? Tha
 
 ## Day One: The Reality Check
 
-Walking into Gojek's office for the first time was overwhelming. This is a company that processes over 3 million orders every day and has more than 10000+ engineers working on 21+ different products. The scale of everything here is just mind-blowing. My manager sat me down and explained that while Flutter is great, most of our core mobile infrastructure runs on native Android, especially for the driver apps that literally power Indonesia's economy.
+Walking into Gojek's office for the first time was overwhelming. This is a company that processes over 3 million orders every day and has more than 1000+ engineers working on 21+ different products. The scale of everything here is just mind-blowing. My manager sat me down and explained that while Flutter is great, most of our core mobile infrastructure runs on native Android, especially for the driver apps that literally power Indonesia's economy.
 
-The transition wasn't just about learning a new framework - it was about understanding how mobile engineering works at scale. At Gojek, we have 140+ Android and iOS engineers working on the same codebase, with around 1100 pipelines running every single day. This isn't your typical startup where you can just wing it and hope for the best.
+The transition wasn't just about learning a new framework - it was about understanding how mobile engineering works at scale. At Gojek, we have 140+ Android and iOS engineers working on the same codebase, with around 100+ pipelines running every single day. This isn't your typical startup where you can just wing it and hope for the best.
 
 ## Week One: The Learning Curve Hits Hard
 
@@ -31,7 +31,7 @@ My mentor showed me how Gojek handles this complexity. They've built sophisticat
 
 ### Architecture Patterns - The Real Deal
 
-Flutter developers are used to thinking about widgets and state management. Android forces you to think about Activities, Fragments, Services, and BroadcastReceivers. At Gojek, they don't just use the basic Android components - they've created their own design language system called Asphalt that standardizes how everything works across all their apps.
+Flutter developers are used to thinking about widgets and state management. Android forces you to think about Activities, Fragments, Services, and BroadcastReceivers. At Gojek, they don't just use the basic Android components - they've created their own design language system called Aloha that standardizes how everything works across all their apps.
 
 The MVVM pattern in Android isn't just a nice-to-have - it's essential when you're working on apps that millions of people depend on daily. ViewModels and LiveData became my new best friends, replacing the familiar Flutter patterns I was used to.
 
