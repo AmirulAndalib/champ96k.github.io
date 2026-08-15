@@ -1,0 +1,31 @@
+# Tushar Nikam — profile
+# Edit freely. Every field is rendered from here on the Home and About pages.
+#
+# `tagline` is rendered on the Home hero. Blank lines become paragraph breaks,
+# so split it into short paragraphs rather than one long block.
+
+name: Tushar Nikam
+title: Software Engineer
+headline: Software Engineer, builder and tinkerer.
+email: champ96k@gmail.com
+github: https://github.com/champ96k
+image: /tushar-nikam.png
+
+tagline: >-
+  I'm a software engineer who likes building things end to end, mobile apps,
+  developer tools, libraries, and the occasional side project.
+
+  I started with Flutter experiments in college and went on to build apps used
+  by millions. Most of my work has been around mobile, with a focus on
+  performance, reliability, and shipping things people actually use.
+
+  Today, I work on GoPay at Gojek, building secure and reliable Android and
+  iOS software. Outside of work, I build things in the open, contribute to open
+  source, and write about what I learn.
+
+about: >-
+  I'm Tushar Nikam, a software engineer. I started in 2019 building Flutter
+  apps in my college years, got my first job as a mobile engineer and have
+  been building mobile products ever since, payments, gaming and
+  multi-platform apps used by millions. Most of my work has been mobile, and a
+  good amount of it has been in the open.

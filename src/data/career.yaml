@@ -1,0 +1,146 @@
+# Career timeline — rendered on the About page, newest first (sorted by `start`).
+# All entries are verified facts provided by Tushar.
+
+- company: Gojek
+  role: Software Development Engineer II
+  employment: Full-time
+  start: 2025-05
+  end: present
+  location: Bengaluru, Karnataka, India
+  image: /logos/gojek.png
+  company_url: https://gopay.co.id/
+  description: >-
+    Building the payments that move a country. I'm part of the mobile team
+    behind GoPay, Gojek's digital payments service.
+  highlights:
+    - >-
+      Shipping scalable, secure and high-performance Android and iOS code that
+      keeps tens of millions of transactions moving smoothly each day.
+    - >-
+      Caring about reliability and scale: systems design, correctness and
+      security as much as shipping features, in a domain where payments apps
+      fail cheap.
+  technologies:
+    - Android
+    - Kotlin
+    - Dart
+    - Flutter
+    - Payment SDK
+    - System design
+    - iOS
+
+- company: Junglee Games
+  role: Software Development Engineer II
+  employment: Full-time
+  start: 2024-02
+  end: 2025-04
+  location: Bengaluru, Karnataka, India
+  image: /logos/junglee-games.png
+  company_url: https://www.jungleegames.com/
+  description: >-
+    Fast-moving games, big numbers. I worked across Junglee Ludo, PokerStars
+    Junglee Poker and Howzat, apps with millions of users on Android and iOS.
+  highlights:
+    - >-
+      Delivered high-performance features and optimizations while owning
+      improvements across scalability, crash-free rates and retention.
+    - >-
+      Played the full-stack generalist: deep on mobile, and reaching into
+      backend, web and game engines for experiments and internal tools.
+  technologies:
+    - Android
+    - Flutter
+    - Dart
+    - MERN
+    - Node.js
+    - Web development
+    - Flame engine
+    - Unity
+    - iOS
+
+- company: Adda52.com
+  role: Software Engineer
+  employment: Full-time
+  start: 2022-08
+  end: 2023-10
+  location: Gurugram, Haryana, India
+  image: /logos/adda52.png
+  company_url: https://adda52.com/
+  description: >-
+    Software Engineer on the mobile squad covering the multi-gaming platform
+    Addagames and Adda52Rummy.
+  highlights:
+    - >-
+      Built features across Flutter, spending significant time in Unity where
+      the games ran as embedded native modules.
+    - >-
+      Picked up a real working understanding of Unity game development on
+      production games.
+  technologies:
+    - Flutter
+    - Dart
+    - Unity
+    - Android
+    - iOS
+
+- company: Mind Sports League Pvt Ltd
+  role: Founding Software Engineer
+  employment: Full-time
+  start: 2021-04
+  end: 2022-06
+  location: Gurugram, Haryana, India
+  image: /logos/mind-sports-league.png
+  company_url: https://pokersportsleague.com/
+  description: >-
+    One of the founding engineers on the mobile team that built Hashtag Poker
+    from scratch.
+  highlights:
+    - Owned the Flutter codebase end to end.
+    - >-
+      Shipped a scalable, crash-free gaming experience that carried the product
+      through its first big wave of players.
+  technologies:
+    - Dart
+    - Flutter
+    - Game development
+
+- company: Mind Sports League Pvt Ltd
+  role: Junior Flutter Developer
+  employment: Internship
+  start: 2020-11
+  end: 2021-04
+  location: Gurugram, Haryana, India
+  image: /logos/mind-sports-league.png
+  company_url: https://pokersportsleague.com/
+  description: >-
+    Brought on as a junior Flutter developer to help build a one-stop solution
+    for the entire poker ecosystem.
+  highlights:
+    - Wrote my first real production code.
+    - >-
+      Learned what shipping to real users actually involves, end to end.
+  technologies:
+    - Dart
+    - Flutter
+    - Game development
+
+- company: Freelancer.com
+  role: Mobile Developer
+  employment: Freelance
+  start: 2020-02
+  end: 2020-10
+  location: Nashik, Maharashtra, India
+  image: /logos/freelancer.png
+  description: >-
+    My start as a professional developer, taking client projects from an empty
+    repo to shipped apps on both stores.
+  highlights:
+    - >-
+      Shipped Moneeys, YD News, Body Care Home, Cheylesmore and Inshape365,
+      owning everything from requirements to release.
+    - >-
+      Learned to move fast with Flutter on real-world products.
+  technologies:
+    - Flutter
+    - Android
+    - iOS

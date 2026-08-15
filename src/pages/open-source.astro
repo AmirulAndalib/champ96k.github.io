@@ -1,0 +1,186 @@
+---
+import Base from '@/layouts/Base.astro';
+import Tags from '@/components/Tags.astro';
+import { getCollection } from 'astro:content';
+import { formatMonthYear } from '@/lib/date';
+import {
+  loadSyncedRepositories,
+  loadSyncedContributions,
+  mergeContributions,
+} from '@/lib/github-data';
+import type { Contribution, OpenSourceData, OpenSourceRepo, SyncedRepository } from '@/types';
+
+// ---- Curated yaml (only repo full names matter) ----
+const entries = await getCollection('openSource');
+const data = entries.reduce<OpenSourceData>(
+  (acc, entry) => {
+    const d = entry.data as unknown as {
+      intro?: string;
+      my_projects?: OpenSourceRepo[];
+      contributions?: Contribution[];
+    };
+    if (typeof d?.intro === 'string') acc.intro = d.intro;
+    if (Array.isArray(d?.my_projects)) acc.my_projects.push(...d.my_projects!);
+    if (Array.isArray(d?.contributions)) acc.contributions.push(...d.contributions!);
+    return acc;
+  },
+  { intro: undefined, my_projects: [], contributions: [] }
+);
+
+// ---- Dynamic GitHub data (synced) ----
+const syncedRepos = await loadSyncedRepositories();
+const syncedContributions = await loadSyncedContributions();
+
+const repoByFullName = new Map<string, SyncedRepository>(
+  syncedRepos.map((r) => [r.full_name.toLowerCase(), r])
+);
+
+function enrich(project: OpenSourceRepo) {
+  const repo = repoByFullName.get(project.repository.toLowerCase());
+  const repoName = project.repository.split('/')[1] ?? project.repository;
+  const repoUrl = `https://github.com/${project.repository}`;
+  return {
+    ...project,
+    /** Prefer the curated display title, then the GitHub repo name, then a bare repo name. */
+    title: project.title ?? repo?.name ?? repoName,
+    repositoryUrl: repoUrl,
+    description:
+      project.description ??
+      repo?.description ??
+      'No description provided on GitHub.',
+    stars: repo?.stars ?? project.stars,
+    homepage: project.homepage ?? repo?.homepage ?? undefined,
+    tags: project.tags?.length ? project.tags : repo?.topics ?? [],
+    created: repo?.created_at ?? undefined,
+    image: project.image ?? '/logo-placeholder.svg',
+  };
+}
+
+const myProjects = data.my_projects
+  .filter((p) => p.repository)
+  .map(enrich)
+  // Order by when the repo was created (not last commit), newest first.
+  .sort((a, b) => (b.created ?? '').localeCompare(a.created ?? ''));
+
+// ---- Contributions: dynamic (synced) + curated fallback, deduped ----
+// Show everything done outside our own repos: open/merged/closed PRs and
+// open/closed issues. Deleted-after-merge PRs can be kept in open-source.yaml's
+// `contributions:` fallback block (GitHub search won't return them).
+const contributions = mergeContributions(syncedContributions, data.contributions)
+  .filter((c) => c.type === 'Pull Request' || c.type === 'Issue');
+
+// The summary line counts everything; only pull requests are listed below.
+const prContributions = contributions.filter((c) => c.type === 'Pull Request');
+
+const mergedCount = contributions.filter((c) => c.state === 'Merged').length;
+const openCount = contributions.filter((c) => c.state === 'Open').length;
+const closedCount = contributions.filter((c) => c.state === 'Closed').length;
+const prCount = contributions.filter((c) => c.type === 'Pull Request').length;
+const issueCount = contributions.filter((c) => c.type === 'Issue').length;
+
+const normDate = (value: string | undefined | null): string =>
+  value ? value.slice(0, 10) : '';
+---
+
+<Base
+  title="Open Source"
+  description="Open-source projects and public contributions by Tushar Nikam, loaded live from GitHub."
+  path="/open-source"
+>
+  <section class="page-head">
+    <h1>Open Source</h1>
+    {data.intro && <p class="lead">{data.intro}</p>}
+    <p class="meta">
+      {myProjects.length} projects · {contributions.length} contributions ({prCount} PRs · {issueCount} issues · {mergedCount} merged · {openCount} open · {closedCount} closed)
+    </p>
+  </section>
+
+  {myProjects.length > 0 && (
+    <section class="section">
+      <h2 class="section-title">Open source projects</h2>
+      <p class="entry-meta" style="margin-bottom:.9rem">
+        Things I built and released in the open, pulled from my synced GitHub data.
+      </p>
+      <div class="entry-list">
+        {
+          myProjects.map((item) => (
+            <article class="entry os-project">
+              <div class="entry-side">
+                <time class="entry-date" datetime={normDate(item.created)}>
+                  {item.created ? formatMonthYear(item.created) : ''}
+                </time>
+                <img class="entry-thumb" src={item.image} alt="" width="56" height="56" loading="lazy" aria-hidden="true" />
+              </div>
+              <div class="entry-main">
+                <h3 class="entry-title">
+                  <a href={item.repositoryUrl} rel="noopener" target="_blank">
+                    {item.title}
+                  </a>
+                  {item.stars != null && item.stars > 0 && (
+                    <span class="meta" style="margin-left:.5rem">{item.stars}★</span>
+                  )}
+                </h3>
+                <p class="entry-meta">{item.role ?? 'Open source'}</p>
+                {item.description && <p class="entry-desc">{item.description}</p>}
+                <div class="project-links">
+                  {item.homepage && <a href={item.homepage} rel="noopener" target="_blank">Homepage ↗</a>}
+                  <a href={item.repositoryUrl} rel="noopener" target="_blank">GitHub ↗</a>
+                </div>
+                {item.tags && item.tags.length > 0 && (
+                  <div style="margin-top:.6rem"><Tags tags={item.tags} /></div>
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  )}
+
+  {prContributions.length > 0 && (
+    <section class="section">
+      <h2 class="section-title">Contributions</h2>
+      <p class="entry-meta" style="margin-bottom:.9rem">
+        Open pull requests of mine in other people's repositories,
+        pulled from{' '}
+        <a href="https://github.com/champ96k?tab=pull-requests" rel="noopener" target="_blank">my GitHub</a> automatically.
+        PRs are kept even after merge.
+      </p>
+      <div class="entry-list">
+        {
+          prContributions.map((c) => (
+            <article class="entry">
+              <div class="entry-side">
+                <time class="entry-date" datetime={normDate(c.date)}>{formatMonthYear(c.date)}</time>
+              </div>
+              <div class="entry-main">
+                <h3 class="entry-title">
+                  <a href={c.url ?? c.repositoryUrl} rel="noopener" target="_blank">{c.title ?? c.repository}</a>
+                </h3>
+                <p class="entry-meta">
+                  <span class={`type-badge type-${c.type === 'Issue' ? 'issue' : 'pr'}`}>{c.type}</span>
+                  {' '}
+                  <span class={`state-badge state-${c.state.toLowerCase()}`}>{c.state}</span>
+                  {' '}
+                  <a href={c.repositoryUrl} rel="noopener" target="_blank">{c.repository}</a>
+                  {c.number != null && <> · #{c.number}</>}
+                  {c.stars != null && c.stars > 0 && (
+                    <> · {c.stars}★</>
+                  )}
+                </p>
+                {c.repoDescription && <p class="entry-desc">{c.repoDescription}</p>}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <p class="muted" style="font-size:.9rem">
+      Everything on this page is pulled from{' '}
+      <a href="https://github.com/champ96k" rel="noopener" target="_blank">github.com/champ96k</a> at build time.
+    </p>
+  </section>
+</Base>

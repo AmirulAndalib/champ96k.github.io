@@ -1,0 +1,243 @@
+# Open Source — rendered at /open-source.
+#
+# `my_projects`: add a line per repository you own that you want to show.
+#   The page fetches EVERYTHING else (title, description, stars, topics,
+#   language, dates) from your synced GitHub data at build time. To keep data
+#   fresh run:  npm run sync:github
+#
+#   Fields:
+#     repository : owner/name  → the only required field (e.g. champ96k/quanta_db)
+#     title      : optional display name; defaults to the repo name from GitHub
+#     role       : optional label, e.g. "Author"
+#     homepage   : optional live link (pub.dev, live site, marketplace, etc.)
+#     description: optional override; defaults to the repo's GitHub description
+#     image      : optional path/URL for a logo; use /logo-placeholder.svg
+#                  (dummy) until you add real logos.
+#     tags       : optional override; defaults to the repo's GitHub topics.
+
+intro: >-
+  I build and contribute to open-source software, mostly around Flutter, Dart,
+  Android and developer tooling. Everything below is pulled live from my
+  GitHub, repository data, stars, descriptions, chips and dates, and ordered
+  by when each project was created.
+
+my_projects:
+  - repository: champ96k/champ96k.github.io
+    title: champ96k.github.io
+    role: Flutter Website
+    homepage: https://champ96k.github.io/#/
+    description: >-
+      My very first portfolio website, built with Flutter. The project that
+      started this little corner of the internet and taught me how to build
+      and ship a public site.
+    tags: [Dart, Flutter, Portfolio, Website]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/PermissionKit
+    title: PermissionKit
+    role: Android Library
+    description: >-
+      A tidy helper for Android apps that asks for and manages app permissions,
+      so developers share one consistent, friendly flow instead of writing it
+      by hand every time.
+    tags: [Kotlin, Android, Library]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/quanta_db
+    title: QuantaDB
+    role: Dart Package
+    homepage: https://pub.dev/packages/quanta_db
+    description: >-
+      A fast way for apps to store and find their own data on the device,
+      without needing an internet connection or a central server. A personal
+      filing cabinet that lives entirely inside the phone.
+    tags: [Dart, Flutter, Database, Package]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/resume_builder
+    title: Resume Builder
+    role: Flutter App
+    homepage: https://resume-builder-tushar-nikams-projects.vercel.app/
+    description: >-
+      A simple, free tool that takes your details and turns them into a clean,
+      professional resume ready to download and share with employers.
+    tags: [Dart, Flutter, Open Source]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/google_phone_number_hint
+    title: Google Phone Number Hint
+    role: Flutter Plugin
+    homepage: https://pub.dev/packages/google_phone_number_hint
+    description: >-
+      A helper for apps that securely pulls the phone number your phone already
+      knows, so users don't have to type it out by hand.
+    tags: [Dart, Flutter, Plugin, Package]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/book-my-movie
+    title: Book My Movie
+    role: Flutter App
+    description: >-
+      A movie booking app project that studies how to design and organise a
+      large app the way a real system would be built, from screens to
+      architecture.
+    tags: [Dart, Flutter, System Design]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/minimal_http_client
+    title: Minimal HTTP Client
+    role: Dart Package
+    homepage: https://pub.dev/packages/minimal_http_client
+    description: >-
+      A lean network helper for apps that keeps the request/response code small
+      and easy to read, so developers can make web calls without heavy setup.
+    tags: [Dart, Flutter, HTTP, Package]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/emerge_alert_dialog
+    title: Emerge Alert Dialog
+    role: Flutter Widget
+    homepage: https://pub.dev/packages/emerge_alert_dialog
+    description: >-
+      A ready-made component that lets apps show friendly, animated pop-up
+      dialogs, so developers add nice alert boxes without writing everything
+      from scratch.
+    tags: [Dart, Flutter, UI, Package]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/int_to_words
+    title: Int to Words
+    role: Dart Package
+    homepage: https://pub.dev/packages/int_to_words
+    description: >-
+      A tiny converter that turns numbers into written words, handy for
+      cheques, invoices, or anywhere numbers should be spelled out.
+    tags: [Dart, Package]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/custom-email-auth
+    title: Custom Email Auth
+    role: Auth Flow
+    description: >-
+      A ready-made sign-in flow for apps that lets users register and log in
+      with their email, with all the important safety steps handled for you.
+    tags: [JavaScript, Auth, Flutter]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/Dashed-Rect
+    title: Dashed Rect
+    role: Flutter Widget
+    homepage: https://pub.dev/packages/dashed_rect
+    description: >-
+      A simple widget that draws dotted and dashed lines in apps, useful for
+      dividers and design touches, ready to drop into any Flutter screen.
+    tags: [Dart, Flutter, UI, Package]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/flutter-onboarding-screen
+    title: Flutter Onboarding Screen
+    role: Flutter Widget
+    homepage: https://pub.dev/packages/flutter_onboarding_screen
+    description: >-
+      A ready-made package for building the welcome screens users see the
+      first time they open an app, guiding them through what it does.
+    tags: [Dart, Flutter, UI, Package]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/flutter_walkthrough_screen
+    title: Flutter Walkthrough Screen
+    role: Flutter Widget
+    homepage: https://pub.dev/packages/flutter_walkthrough_screen
+    description: >-
+      A ready-made package for building intro and walkthrough screens that
+      tour users through an app step by step, like a guided first visit.
+    tags: [Dart, Flutter, UI, Package]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/agora-voice-calling
+    title: Agora Voice Calling
+    role: Flutter App
+    description: >-
+      A voice calling app that shows how to add live audio calls to an app
+      using real-time communication, built with a clean and organised code
+      structure.
+    tags: [Dart, Flutter, Agora, App]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/Coronavirus-Tracking-App
+    title: Coronavirus Tracking App
+    role: Flutter App
+    description: >-
+      A public health tracker built to follow COVID-19 cases around the world,
+      created as a way to learn how apps fetch and show live data from the
+      internet.
+    tags: [Dart, Flutter, App]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/tic-tac-toe-complete-application-in-Flutter
+    title: Tic Tac Toe
+    role: Flutter Game
+    description: >-
+      A complete, playable game of Tic Tac Toe for mobile, with a clean
+      interface and win detection, ready to enjoy or study.
+    tags: [Dart, Flutter, Game]
+    image: /logo-placeholder.svg
+
+  - repository: champ96k/love-calculator-app-in-flutter
+    title: Love Calculator App
+    role: Flutter App
+    description: >-
+      A fun little app that calculates a playful "love percentage" between two
+      names, a light-hearted toy for sharing a laugh.
+    tags: [Flutter, App]
+    image: /logo-placeholder.svg
+
+contributions:
+  - id: flutterfire-18317
+    repository: firebase/flutterfire
+    repositoryUrl: https://github.com/firebase/flutterfire
+    number: 18317
+    title: >-
+      fix(firebase_messaging): migrate example iOS project from Objective-C to
+      Swift
+    state: Open
+    date: 2026-05-27
+    url: https://github.com/firebase/flutterfire/pull/18317
+
+  - id: bloc-4819
+    repository: felangel/bloc
+    repositoryUrl: https://github.com/felangel/bloc
+    number: 4819
+    title: 'docs: clarify per-handler event transformer semantics'
+    state: Open
+    date: 2026-05-27
+    url: https://github.com/felangel/bloc/pull/4819
+
+  - id: who-1906
+    repository: WorldHealthOrganization/app
+    repositoryUrl: https://github.com/WorldHealthOrganization/app
+    number: 1906
+    title: >-
+      Bugfix on Home Screen shows a blank animation for countries having 0
+      deaths
+    state: Merged
+    date: 2021-02
+    url: https://github.com/WorldHealthOrganization/app/pull/1906
+
+  - id: who-1912
+    repository: WorldHealthOrganization/app
+    repositoryUrl: https://github.com/WorldHealthOrganization/app
+    number: 1912
+    title: Indentation on bullet points
+    state: Open
+    date: 2021-02
+    url: https://github.com/WorldHealthOrganization/app/pull/1912
+
+  - id: walkthrough-readme
+    repository: The-static-startup/flutter_walkthrough_screen
+    repositoryUrl: https://github.com/The-static-startup/flutter_walkthrough_screen
+    number: 2
+    title: Update README.md
+    state: Merged
+    date: 2023-08-23
+    url: https://github.com/The-static-startup/flutter_walkthrough_screen/pull/2

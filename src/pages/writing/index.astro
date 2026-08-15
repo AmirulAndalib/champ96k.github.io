@@ -1,0 +1,67 @@
+---
+import Base from '@/layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '@/lib/date';
+import Tags from '@/components/Tags.astro';
+
+const writing = (await getCollection('writing'))
+  .filter((post) => post.data.draft !== true)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const years: { year: number; posts: typeof writing }[] = [];
+for (const post of writing) {
+  const year = post.data.date.getUTCFullYear();
+  const yearGroup = years.find((y) => y.year === year);
+  if (yearGroup) yearGroup.posts.push(post);
+  else years.push({ year, posts: [post] });
+}
+// years already in descending order since posts sorted desc
+---
+
+<Base
+  title="Writing"
+  description="Everything Tushar writes, technology, career, notes, opinions and project writeups."
+  path="/writing"
+>
+  <section class="page-head">
+    <h1>Writing</h1>
+    <p class="lead">
+      Everything I write, technical articles, career notes, opinions, project
+      writeups and personal notes. Newest first.
+    </p>
+    <p class="meta">
+      <a href="/rss.xml" style="color:inherit">RSS</a>
+    </p>
+  </section>
+
+  {writing.length === 0 ? (
+    <p class="muted">No published posts yet.</p>
+  ) : (
+    years.map((year) => (
+      <section style="margin-bottom:2.5rem">
+        <h2 class="section-title">{year.year}</h2>
+        <div class="entry-list">
+          {
+            year.posts.map((post) => (
+              <article class="entry">
+                <time class="entry-date" datetime={post.data.date.toISOString().slice(0, 10)}>
+                  {formatDate(post.data.date.toISOString().slice(0, 10))}
+                </time>
+                <div class="entry-main">
+                  <h3 class="entry-title">
+                    <a href={`/writing/${post.id}`}>{post.data.title}</a>
+                  </h3>
+                  <p class="entry-meta">{post.data.type}</p>
+                  {post.data.description && <p class="entry-desc">{post.data.description}</p>}
+                  {(post.data.tags ?? []).length > 0 && (
+                    <div style="margin-top:.4rem"><Tags tags={post.data.tags} /></div>
+                  )}
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+    ))
+  )}
+</Base>

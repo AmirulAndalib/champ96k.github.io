@@ -1,0 +1,188 @@
+---
+import Base from '@/layouts/Base.astro';
+import Tags from '@/components/Tags.astro';
+import { getCollection } from 'astro:content';
+import { formatRange } from '@/lib/date';
+import type {
+  CareerEntry,
+  EducationEntry,
+  ProfileData,
+  SocialEntry,
+  VolunteeringEntry,
+} from '@/types';
+
+const profileEntry = (await getCollection('profile'))[0];
+const profile = profileEntry?.data as unknown as ProfileData | undefined;
+
+const socials = (await getCollection('social'))
+  .map((e) => e.data as unknown as SocialEntry)
+  .filter((s) => s && s.url);
+
+const career = (await getCollection('career'))
+  .map((e) => e.data as unknown as CareerEntry)
+  .filter((c) => c.company && c.start)
+  .sort((a, b) =>
+    `${b.start}`.localeCompare(`${a.start}`)
+  );
+
+const education = (await getCollection('education'))
+  .map((e) => e.data as unknown as EducationEntry)
+  .filter((c) => c.institution)
+  .sort((a, b) => `${b.start}`.localeCompare(`${a.start}`));
+
+const volunteering = (await getCollection('volunteering'))
+  .map((e) => e.data as unknown as VolunteeringEntry)
+  .filter((c) => c.org)
+  .sort((a, b) => `${b.start}`.localeCompare(`${a.start}`));
+---
+
+<Base
+  title="About"
+  description="About Tushar Nikam, a software engineer, with his career timeline, education, volunteering and interests."
+  path="/about"
+>
+  <section class="page-head">
+    <h1>About</h1>
+    <p class="lead">{profile?.about}</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Career</h2>
+    <div class="timeline">
+      {
+        career.map((job) => (
+          <div class="timeline-item">
+            <div class="timeline-aside">
+              <time class="timeline-range">{formatRange(job.start, job.end)}</time>
+              {job.image ? (
+                <img src={job.image} alt={job.company} width="72" height="72" loading="lazy" />
+              ) : (
+                <img src="/logo-placeholder.svg" alt="" width="72" height="72" loading="lazy" aria-hidden="true" />
+              )}
+            </div>
+            <div class="timeline-body">
+              <h3>
+                {
+                  job.company_url ? (
+                    <a href={job.company_url} rel="noopener" target="_blank">{job.company}</a>
+                  ) : (
+                    job.company
+                  )
+                }
+              </h3>
+              <p class="entry-meta">
+                <span class="timeline-role">{job.role}</span>
+                {job.location && <> · {job.location}</>}
+              </p>
+              {job.description && (
+                <div class="timeline-desc"><p>{job.description}</p></div>
+              )}
+              {job.highlights && job.highlights.length > 0 && (
+                <div class="timeline-desc">
+                  <ul>
+                    {job.highlights.map((h) => <li>{h}</li>)}
+                  </ul>
+                </div>
+              )}
+              {job.technologies && job.technologies.length > 0 && (
+                <div class="timeline-tech"><Tags tags={job.technologies} /></div>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {education.length > 0 && (
+    <section class="section">
+      <h2 class="section-title">Education</h2>
+      <div class="timeline">
+        {
+          education.map((entry) => (
+            <div class="timeline-item">
+              <div class="timeline-aside">
+                <time class="timeline-range">{formatRange(entry.start, entry.end)}</time>
+                {entry.image ? (
+                  <img src={entry.image} alt={entry.institution} width="72" height="72" loading="lazy" />
+                ) : (
+                  <img src="/logo-placeholder.svg" alt="" width="72" height="72" loading="lazy" aria-hidden="true" />
+                )}
+              </div>
+              <div class="timeline-body">
+                <h3>{entry.institution}</h3>
+                <p class="entry-meta">
+                  <span class="timeline-role">{entry.degree}</span>
+                  {entry.field && <> · {entry.field}</>}
+                </p>
+                {entry.description && (
+                  <div class="timeline-desc"><p>{entry.description}</p></div>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  )}
+
+  {volunteering.length > 0 && (
+    <section class="section">
+      <h2 class="section-title">Volunteering</h2>
+      <div class="timeline">
+        {
+          volunteering.map((entry) => (
+            <div class="timeline-item">
+              <div class="timeline-aside">
+                <time class="timeline-range">{formatRange(entry.start, entry.end)}</time>
+                {entry.image ? (
+                  <img src={entry.image} alt={entry.org} width="72" height="72" loading="lazy" />
+                ) : (
+                  <img src="/logo-placeholder.svg" alt="" width="72" height="72" loading="lazy" aria-hidden="true" />
+                )}
+              </div>
+              <div class="timeline-body">
+                <h3>{entry.org}</h3>
+                <p class="entry-meta timeline-role">{entry.role}</p>
+                {entry.description && (
+                  <div class="timeline-desc"><p>{entry.description}</p></div>
+                )}
+                {entry.link && (
+                  <p style="margin:.5rem 0 0">
+                    <a href={entry.link} rel="noopener" target="_blank">Link ↗</a>
+                  </p>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  )}
+
+  {socials.length > 0 && (
+    <section class="section">
+      <h2 class="section-title">Around the web</h2>
+      <p style="max-width:40rem">
+        The easy places to find me:
+      </p>
+      <p>
+        {
+          socials.map((social, i) => (
+            <>
+              {i > 0 && ' · '}
+              <a href={social.url} rel="me noopener" target="_blank">{social.label}</a>
+            </>
+          ))
+        }
+      </p>
+    </section>
+  )}
+
+  <section class="section">
+    <p class="muted" style="font-size:.9rem">
+      Want to talk about mobile, payments, gaming or open source? Email{' '}
+      <a href={`mailto:${profile?.email ?? ''}`}>{profile?.email}</a>.
+    </p>
+  </section>
+</Base>

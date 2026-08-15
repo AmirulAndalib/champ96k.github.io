@@ -1,0 +1,64 @@
+---
+import Base from '@/layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { formatDate } from '@/lib/date';
+import Tags from '@/components/Tags.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('writing');
+  return posts
+    .filter((post) => post.data.draft !== true)
+    .map((post) => ({
+      params: { slug: post.id },
+      props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const dateString = post.data.date.toISOString().slice(0, 10);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  author: { '@type': 'Person', name: 'Tushar Nikam' },
+  url: new URL(`/writing/${post.id}`, Astro.site).toString(),
+};
+---
+
+<Base
+  title={post.data.title}
+  description={post.data.description}
+  path={`/writing/${post.id}`}
+  type="article"
+  publishedTime={post.data.date.toISOString()}
+  narrow
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+  <article>
+    <header class="article-head">
+      <p class="kicker meta">Writing</p>
+      <h1>{post.data.title}</h1>
+      <div class="byline">
+        <time class="meta" datetime={dateString}>{formatDate(dateString)}</time>
+        <span class="meta">{post.data.type}</span>
+      </div>
+      {(post.data.tags ?? []).length > 0 && (
+        <div style="margin-top:1rem"><Tags tags={post.data.tags} /></div>
+      )}
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <hr />
+    <p>
+      <a class="more-link" href="/writing">All writing →</a>
+    </p>
+  </article>
+</Base>
