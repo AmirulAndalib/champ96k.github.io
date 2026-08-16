@@ -19,6 +19,25 @@ const writing = writingAll
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const recentWriting = writing.slice(0, 5);
 
+// Top 3 projects (newest first) for mobile summary
+const projectsAll = (await getCollection('projects')).map(
+  (e) => e.data as any
+);
+const topProjects = projectsAll
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 3);
+
+// Unique companies for mobile summary
+const careerAll = (await getCollection('career')).map(
+  (e) => e.data as any
+);
+const seenCompanies = new Set<string>();
+const uniqueCompanies = careerAll.filter((c) => {
+  if (seenCompanies.has(c.company)) return false;
+  seenCompanies.add(c.company);
+  return true;
+});
+
 const avatar = profile?.image ?? '/avatar.svg';
 const title = SITE_NAME;
 const taglineParagraphs = (profile?.tagline ?? '')
@@ -61,6 +80,46 @@ const ICONS: Record<string, string> = {
       </div>
       <img class="home-avatar" src={avatar} alt={profile?.name ?? 'Tushar Nikam'} width="272" height="272" />
     </div>
+  </section>
+
+  <section class="mobile-summary section">
+    <div class="mobile-summary-intro">
+      <p class="mobile-summary-desc">
+        Hello! I'm Tushar and you're currently exploring my tiny corner of the internet.
+        I use this space to project my ideas and express my obsessions.
+      </p>
+      <img class="mobile-summary-avatar" src={avatar} alt={profile?.name ?? 'Tushar Nikam'} width="120" height="120" />
+    </div>
+    <h2 class="section-title">Summary</h2>
+    <ul class="mobile-summary-list">
+      <li class="mobile-summary-row">
+        Currently I'm working on my <a href="/projects">ideas<svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+        <span class="inline-logos">
+          {topProjects.map((p: any) => (
+            <img class="inline-logo" src={p.image} alt={p.title} width="24" height="24" loading="lazy" />
+          ))}
+        </span>
+      </li>
+      <li class="mobile-summary-row">
+        Previously worked on consumer mobile products, payments, and gaming applications used by millions - 
+        <a href="/about"> View<svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+        <span class="overlapping-logos">
+          {uniqueCompanies.map((c: any) => (
+            <img class="overlapping-logo" src={c.image} alt={c.company} width="28" height="28" loading="lazy" />
+          ))}
+        </span>
+      </li>
+      <li>
+        I build developer tools, libraries, Flutter packages, plugins, and products outside of my day job
+        <a href="/open-source">View more<svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+      </li>
+      <li>
+        I write a pretty smart newsletter called <a href="/writing">Writing<svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+      </li>
+      <li>
+        <span class="mobile-age">27</span> years old, based in Bangalore India
+      </li>
+    </ul>
   </section>
 
   {socials.length > 0 && (
@@ -133,4 +192,17 @@ const ICONS: Record<string, string> = {
       <a href={`mailto:${profile?.email ?? ''}`}>Email me</a>.
     </p>
   </section>
+
+  <script is:inline>
+    (function () {
+      var el = document.querySelector('.mobile-age');
+      if (!el) return;
+      var dob = new Date(1998, 9, 20);
+      var now = new Date();
+      var age = now.getFullYear() - dob.getFullYear();
+      var m = now.getMonth() - dob.getMonth();
+      if (m < 0 || (m === 0 && now.getDate() < dob.getDate())) age--;
+      el.textContent = age;
+    })();
+  </script>
 </Base>
