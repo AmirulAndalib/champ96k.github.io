@@ -105,11 +105,11 @@ const normDate = (value: string | undefined | null): string =>
         {
           myProjects.map((item) => (
             <article class="entry os-project">
+              <time class="entry-date" datetime={normDate(item.created)}>
+                {item.created ? formatMonthYear(item.created) : ''}
+              </time>
               <div class="entry-side">
-                <time class="entry-date" datetime={normDate(item.created)}>
-                  {item.created ? formatMonthYear(item.created) : ''}
-                </time>
-                <img class="entry-thumb" src={item.image} alt="" width="56" height="56" loading="lazy" aria-hidden="true" />
+                <img class="entry-thumb" src={item.image} alt="" width="80" height="80" loading="lazy" aria-hidden="true" />
               </div>
               <div class="entry-main">
                 <h3 class="entry-title">

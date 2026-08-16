@@ -28,36 +28,39 @@ const hasExternalLink = Boolean(project.url) || Boolean(project.github);
   narrow
 >
   <article>
-    <header class="article-head">
-      <p class="kicker meta">{project.date ? formatDate(project.date) : ''}</p>
-      <h1>{project.title}</h1>
-      {project.description && <p class="lede">{project.description}</p>}
-      <div class="byline">
-        {project.type && <span class="tag">{project.type}</span>}
-        {project.status && <span class="meta">{project.status}</span>}
-      </div>
-      {project.tags && project.tags.length > 0 && (
-        <div style="margin-top:1rem"><Tags tags={project.tags} /></div>
-      )}
-    </header>
+    <div class="project-hero">
+      <header class="article-head">
+        <p class="kicker meta">{project.date ? formatDate(project.date) : ''}</p>
+        <h1>{project.title}</h1>
+        {project.description && <p class="lede">{project.description}</p>}
+        <div class="byline">
+          {project.type && <span class="tag">{project.type}</span>}
+          {project.status && <span class="meta">{project.status}</span>}
+        </div>
+        {project.tags && project.tags.length > 0 && (
+          <div style="margin-top:1rem"><Tags tags={project.tags} /></div>
+        )}
+        {hasExternalLink && (
+          <div class="link-row" style="margin-top:1.25rem">
+            {project.url && <a href={project.url} rel="noopener" target="_blank">Live demo ↗</a>}
+            {project.github && <a href={project.github} rel="noopener" target="_blank">Source code ↗</a>}
+            {project.links?.map((link) => (
+              <a class="store-link" href={link.url} rel="noopener" target="_blank">
+                {link.label} ↗
+              </a>
+            ))}
+          </div>
+        )}
+      </header>
 
-    {hasExternalLink && (
-      <div class="link-row" style="margin-bottom:1.5rem">
-        {project.url && <a href={project.url} rel="noopener" target="_blank">Live demo ↗</a>}
-        {project.github && <a href={project.github} rel="noopener" target="_blank">Source code ↗</a>}
-        {project.links?.map((link) => (
-          <a class="store-link" href={link.url} rel="noopener" target="_blank">
-            {link.label} ↗
+      {project.image && (
+        <figure class="project-hero-img">
+          <a href={project.url || project.github} rel="noopener" target="_blank">
+            <img src={project.image} alt={project.title} loading="lazy" />
           </a>
-        ))}
-      </div>
-    )}
-
-    {project.image && (
-      <figure style="margin:0 0 1.75rem">
-        <img src={project.image} alt={project.title} loading="lazy" />
-      </figure>
-    )}
+        </figure>
+      )}
+    </div>
 
     <div class="prose">
       {project.overview && (

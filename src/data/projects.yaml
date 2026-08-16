@@ -21,6 +21,7 @@
   url: https://15aug1947.netlify.app/
   github: https://github.com/champ96k/15-agu-1947-archive
   status: Active
+  image: /project/15Aug1947.png
   overview: >-
     A digital library of Indian newspapers from 15 August 1947, the day India
     gained its independence. It lets history lovers read what people actually
@@ -35,6 +36,7 @@
   tags: [Web, Tool]
   url: https://letmethink.champ96k.com/
   status: Live
+  image: /project/letmethink.png
   overview: >-
     A tiny tool that pauses you before you send a message. It asks you to take
     a breath and reconsider, so a quick reaction doesn't turn into a regretful
@@ -51,6 +53,7 @@
   github: https://github.com/champ96k/Tokenbar
   status: Active
   technologies: [Swift, macOS]
+  image: /project/TokenBar.png
   overview: >-
     A small app that lives in the menu bar of your Mac. It shows how much of
     your AI service allowance you have used, how much it has cost you, and
@@ -67,6 +70,7 @@
   url: https://openalgo-io.netlify.app/
   github: https://github.com/champ96k/OpenAlgo
   status: Live
+  image: /project/OpenAlgo.png
   overview: >-
     A practice ground for people learning algorithms and problem solving, the
     kind of skills used in software job interviews. You solve problems and get
@@ -84,6 +88,7 @@
   url: https://peakfit.champ96k.com
   github: https://github.com/champ96k/peak-fit-elevate
   status: Live
+  image: /project/peakFit.png
   links:
     - label: App Store
       url: https://apps.apple.com/app/id6777769375
@@ -105,6 +110,7 @@
   url: https://contesthub.labs.champ96k.com/
   github: https://github.com/champ96k/contest_hub_website
   status: Live
+  image: /project/contestHub.png
   links:
     - label: Play Store
       url: https://play.google.com/store/apps/details?id=com.champ96k.labs.contesthub
@@ -124,6 +130,7 @@
   url: https://labs.champ96k.com
   github: https://github.com/champ96k/champ96k_labs_website
   status: Live
+  image: /project/champ96kLabs.png
   overview: >-
     A home for small experiments and toys. It's the corner of the internet
     where quick ideas get built, hosted and kept alive, so each one has a place
@@ -140,6 +147,7 @@
   url: https://tripledger.labs.champ96k.com/
   github: https://github.com/champ96k/office-trip-reimbursement
   status: Live
+  image: "/project/Trip Ledger.png"
   overview: >-
     A simple log for tracking office trip expenses. When you travel for work,
     it keeps a record of what you spent so you can get your money back without
@@ -156,6 +164,7 @@
   url: https://focusmatrix.labs.champ96k.com/
   github: https://github.com/champ96k/FocusMatrix
   status: Live
+  image: "/project/Focus Matrix.png"
   overview: >-
     A planning tool that helps you build your day around what really matters.
     Instead of a never-ending to-do list, it divides your time into focused
@@ -173,6 +182,7 @@
   github: https://github.com/champ96k/quanta_db
   status: Open Source
   technologies: [Dart, Dart FFI]
+  image: /project/QuantaDB.png
   overview: >-
     A fast way for apps to store and find their own data on the device, without
     needing an internet connection or a central server. Think of it as a
@@ -189,6 +199,7 @@
   github: https://github.com/champ96k/ai-code-review-action
   status: Open Source
   technologies: [Python, GitHub Actions]
+  image: "/project/AI Code Review.png"
   overview: >-
     A helper that checks software code automatically whenever a developer
     submits changes, like a second reviewer who never sleeps. It flags likely
@@ -205,6 +216,7 @@
   url: https://ui-color-picker-50342.web.app/#/
   github: https://github.com/champ96k/ui_color_picker
   status: Open Source
+  image: "/project/UI Color Picker.png"
   overview: >-
     A tiny tool for choosing colors while designing an app or webpage. It gives
     you a palette and a color input in one simple, fast place, with nothing

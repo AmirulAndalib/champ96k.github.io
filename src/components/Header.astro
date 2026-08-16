@@ -1,6 +1,7 @@
 ---
+import { SITE_NAME } from '@/lib/site';
+
 const nav = [
-  { label: 'Home', href: '/' },
   { label: 'Projects', href: '/projects' },
   { label: 'Open Source', href: '/open-source' },
   { label: 'Writing', href: '/writing' },
@@ -8,7 +9,6 @@ const nav = [
   { label: 'About', href: '/about' },
 ];
 
-// Determine which page is active from the pathname, matching the first segment.
 function isActive(href: string): boolean {
   const { pathname } = Astro.url;
   if (href === '/') return pathname === '/';
@@ -18,27 +18,108 @@ function isActive(href: string): boolean {
 
 <header class="site-header">
   <div class="site-header-inner">
-    <nav class="site-nav" style="margin-right: auto" aria-label="Primary">
-      {
-        nav.map((item) => (
+    <a href="/" class="header-name">{SITE_NAME}</a>
+
+    <nav class="site-nav" aria-label="Primary">
+      {nav.map((item) => (
+        <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <span class="header-sep" aria-hidden="true"></span>
+
+    <div class="header-meta">
+      <span class="header-time" id="header-time"></span>
+      <span class="header-location">Bengaluru</span>
+      <span class="header-weather" id="header-weather"></span>
+    </div>
+
+    <details class="nav-toggle">
+      <summary aria-label="Toggle navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </summary>
+      <nav class="nav-menu" aria-label="Primary">
+        {nav.map((item) => (
           <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
             {item.label}
           </a>
-        ))
-      }
-    </nav>
-
-    <details class="nav-toggle">
-      <summary aria-label="Toggle navigation">Menu</summary>
-      <nav class="nav-menu" aria-label="Primary">
-        {
-          nav.map((item) => (
-            <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
-              {item.label}
-            </a>
-          ))
-        }
+        ))}
       </nav>
     </details>
   </div>
 </header>
+
+<script is:inline>
+(function () {
+  var TIME_EL = document.getElementById('header-time');
+  var WEATHER_EL = document.getElementById('header-weather');
+
+  function updateTime() {
+    if (!TIME_EL) return;
+    try {
+      var now = new Date();
+      var h = now.getHours();
+      var m = now.getMinutes();
+      var ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12 || 12;
+      TIME_EL.textContent = h + ':' + (m < 10 ? '0' : '') + m + ' ' + ampm;
+    } catch (_) {
+      if (TIME_EL) TIME_EL.style.display = 'none';
+    }
+  }
+  updateTime();
+  setInterval(updateTime, 30000);
+
+  var WMO_ICONS = {
+    0: '\u2600', 1: '\uD83C\uDF24', 2: '\u26C5', 3: '\u2601',
+    45: '\uD83C\uDF2B', 48: '\uD83C\uDF2B',
+    51: '\uD83C\uDF26', 53: '\uD83C\uDF26', 55: '\uD83C\uDF27',
+    61: '\uD83C\uDF27', 63: '\uD83C\uDF27', 65: '\uD83C\uDF29',
+    71: '\uD83C\uDF28', 73: '\uD83C\uDF28', 75: '\u2744',
+    80: '\uD83C\uDF26', 81: '\uD83C\uDF27', 82: '\u26C8',
+    95: '\u26C8', 96: '\u26C8', 99: '\u26C8'
+  };
+
+  var CACHE_KEY = 'wx_v2';
+  var THIRTY_MIN = 30 * 60 * 1000;
+
+  function showWeather(temp, code) {
+    if (!WEATHER_EL) return;
+    var icon = WMO_ICONS[code] || '\u2601';
+    WEATHER_EL.textContent = icon + ' ' + Math.round(temp) + '\u00B0C';
+    WEATHER_EL.style.display = '';
+  }
+
+  function loadWeather() {
+    if (!WEATHER_EL) return;
+    try {
+      var c = JSON.parse(localStorage.getItem(CACHE_KEY));
+      if (c && Date.now() - c.t < THIRTY_MIN) {
+        showWeather(c.tmp, c.cd);
+        return;
+      }
+    } catch (_) {}
+
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=12.9716&longitude=77.5946&current=temperature_2m,weather_code')
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var t = d.current.temperature_2m;
+        var cd = d.current.weather_code;
+        showWeather(t, cd);
+        try { localStorage.setItem(CACHE_KEY, JSON.stringify({ tmp: t, cd: cd, t: Date.now() })); } catch (_) {}
+      })
+      .catch(function () {
+        if (WEATHER_EL) WEATHER_EL.style.display = 'none';
+      });
+  }
+
+  loadWeather();
+  setInterval(loadWeather, THIRTY_MIN);
+})();
+</script>

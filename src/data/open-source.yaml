@@ -31,7 +31,7 @@ my_projects:
       started this little corner of the internet and taught me how to build
       and ship a public site.
     tags: [Dart, Flutter, Portfolio, Website]
-    image: /logo-placeholder.svg
+    image: /open-source/champ96k.png
 
   - repository: champ96k/PermissionKit
     title: PermissionKit
@@ -41,7 +41,7 @@ my_projects:
       so developers share one consistent, friendly flow instead of writing it
       by hand every time.
     tags: [Kotlin, Android, Library]
-    image: /logo-placeholder.svg
+    image: /open-source/PermissionKit.png
 
   - repository: champ96k/quanta_db
     title: QuantaDB
@@ -52,7 +52,7 @@ my_projects:
       without needing an internet connection or a central server. A personal
       filing cabinet that lives entirely inside the phone.
     tags: [Dart, Flutter, Database, Package]
-    image: /logo-placeholder.svg
+    image: /open-source/pubdev.png
 
   - repository: champ96k/resume_builder
     title: Resume Builder
@@ -62,7 +62,7 @@ my_projects:
       A simple, free tool that takes your details and turns them into a clean,
       professional resume ready to download and share with employers.
     tags: [Dart, Flutter, Open Source]
-    image: /logo-placeholder.svg
+    image: "/open-source/resume builder.png"
 
   - repository: champ96k/google_phone_number_hint
     title: Google Phone Number Hint
@@ -72,7 +72,7 @@ my_projects:
       A helper for apps that securely pulls the phone number your phone already
       knows, so users don't have to type it out by hand.
     tags: [Dart, Flutter, Plugin, Package]
-    image: /logo-placeholder.svg
+    image: /open-source/pubdev.png
 
   - repository: champ96k/book-my-movie
     title: Book My Movie
@@ -82,7 +82,7 @@ my_projects:
       large app the way a real system would be built, from screens to
       architecture.
     tags: [Dart, Flutter, System Design]
-    image: /logo-placeholder.svg
+    image: /open-source/bookMyShow.png
 
   - repository: champ96k/minimal_http_client
     title: Minimal HTTP Client
@@ -92,7 +92,7 @@ my_projects:
       A lean network helper for apps that keeps the request/response code small
       and easy to read, so developers can make web calls without heavy setup.
     tags: [Dart, Flutter, HTTP, Package]
-    image: /logo-placeholder.svg
+    image: /open-source/pubdev.png
 
   - repository: champ96k/emerge_alert_dialog
     title: Emerge Alert Dialog
@@ -103,7 +103,7 @@ my_projects:
       dialogs, so developers add nice alert boxes without writing everything
       from scratch.
     tags: [Dart, Flutter, UI, Package]
-    image: /logo-placeholder.svg
+    image: /open-source/pubdev.png
 
   - repository: champ96k/int_to_words
     title: Int to Words
@@ -113,7 +113,7 @@ my_projects:
       A tiny converter that turns numbers into written words, handy for
       cheques, invoices, or anywhere numbers should be spelled out.
     tags: [Dart, Package]
-    image: /logo-placeholder.svg
+    image: /open-source/pubdev.png
 
   - repository: champ96k/custom-email-auth
     title: Custom Email Auth
@@ -122,7 +122,7 @@ my_projects:
       A ready-made sign-in flow for apps that lets users register and log in
       with their email, with all the important safety steps handled for you.
     tags: [JavaScript, Auth, Flutter]
-    image: /logo-placeholder.svg
+    image: /open-source/CustomEmailAuth.png
 
   - repository: champ96k/Dashed-Rect
     title: Dashed Rect
@@ -132,7 +132,7 @@ my_projects:
       A simple widget that draws dotted and dashed lines in apps, useful for
       dividers and design touches, ready to drop into any Flutter screen.
     tags: [Dart, Flutter, UI, Package]
-    image: /logo-placeholder.svg
+    image: /open-source/pubdev.png
 
   - repository: champ96k/flutter-onboarding-screen
     title: Flutter Onboarding Screen
@@ -142,7 +142,7 @@ my_projects:
       A ready-made package for building the welcome screens users see the
       first time they open an app, guiding them through what it does.
     tags: [Dart, Flutter, UI, Package]
-    image: /logo-placeholder.svg
+    image: /open-source/pubdev.png
 
   - repository: champ96k/flutter_walkthrough_screen
     title: Flutter Walkthrough Screen
@@ -152,7 +152,7 @@ my_projects:
       A ready-made package for building intro and walkthrough screens that
       tour users through an app step by step, like a guided first visit.
     tags: [Dart, Flutter, UI, Package]
-    image: /logo-placeholder.svg
+    image: /open-source/pubdev.png
 
   - repository: champ96k/agora-voice-calling
     title: Agora Voice Calling
@@ -162,7 +162,7 @@ my_projects:
       using real-time communication, built with a clean and organised code
       structure.
     tags: [Dart, Flutter, Agora, App]
-    image: /logo-placeholder.svg
+    image: /open-source/Agora.png
 
   - repository: champ96k/Coronavirus-Tracking-App
     title: Coronavirus Tracking App
@@ -172,7 +172,7 @@ my_projects:
       created as a way to learn how apps fetch and show live data from the
       internet.
     tags: [Dart, Flutter, App]
-    image: /logo-placeholder.svg
+    image: /open-source/covid19Tracker.png
 
   - repository: champ96k/tic-tac-toe-complete-application-in-Flutter
     title: Tic Tac Toe
@@ -181,7 +181,7 @@ my_projects:
       A complete, playable game of Tic Tac Toe for mobile, with a clean
       interface and win detection, ready to enjoy or study.
     tags: [Dart, Flutter, Game]
-    image: /logo-placeholder.svg
+    image: /open-source/tic_tac_toe.png
 
   - repository: champ96k/love-calculator-app-in-flutter
     title: Love Calculator App
@@ -190,7 +190,7 @@ my_projects:
       A fun little app that calculates a playful "love percentage" between two
       names, a light-hearted toy for sharing a laugh.
     tags: [Flutter, App]
-    image: /logo-placeholder.svg
+    image: "/open-source/love calculator.png"
 
 contributions:
   - id: flutterfire-18317

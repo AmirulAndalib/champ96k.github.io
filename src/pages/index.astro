@@ -48,16 +48,19 @@ const ICONS: Record<string, string> = {
   path="/"
 >
   <section class="home-hero section-first">
-    <div class="home-hero-text">
-      <h1 class="home-title">{profile?.name ?? 'Tushar Nikam'}</h1>
-      <p class="home-tagline serif">{profile?.headline}</p>
-      {
-        taglineParagraphs.map((paragraph) => (
-          <p class="lede" set:html={paragraph} />
-        ))
-      }
+    <div class="home-hero-content">
+      <div class="home-hero-text">
+        <p class="home-tagline serif">{profile?.headline}</p>
+        <div class="home-hero-desc">
+          {
+            taglineParagraphs.map((paragraph) => (
+              <p class="lede" set:html={paragraph} />
+            ))
+          }
+        </div>
+      </div>
+      <img class="home-avatar" src={avatar} alt={profile?.name ?? 'Tushar Nikam'} width="272" height="272" />
     </div>
-    <img class="home-avatar" src={avatar} alt={profile?.name ?? 'Tushar Nikam'} width="272" height="272" />
   </section>
 
   {socials.length > 0 && (
