@@ -93,25 +93,30 @@ const ICONS: Record<string, string> = {
     <h2 class="section-title">Summary</h2>
     <ul class="mobile-summary-list">
       <li class="mobile-summary-row">
-        Currently I'm working on my <a href="/projects">ideas<svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
-        <span class="inline-logos">
-          {topProjects.map((p: any) => (
-            <img class="inline-logo" src={p.image} alt={p.title} width="24" height="24" loading="lazy" />
-          ))}
+        Currently I'm working on my{' '}
+        <span class="summary-cluster">
+          <a href="/projects">ideas<svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+          <span class="inline-logos">
+            {topProjects.map((p: any) => (
+              <img class="inline-logo" src={p.image} alt={p.title} width="24" height="24" loading="lazy" />
+            ))}
+          </span>
         </span>
       </li>
       <li class="mobile-summary-row">
-        Previously worked on consumer mobile products, payments, and gaming applications used by millions - 
-        <a href="/about"> View<svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
-        <span class="overlapping-logos">
-          {uniqueCompanies.map((c: any) => (
-            <img class="overlapping-logo" src={c.image} alt={c.company} width="28" height="28" loading="lazy" />
-          ))}
+        Previously worked on consumer mobile products, payments, and gaming applications used by millions{' '}
+        <span class="summary-cluster">
+          <a href="/about">work<svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+          <span class="overlapping-logos">
+            {uniqueCompanies.map((c: any) => (
+              <img class="overlapping-logo" src={c.image} alt={c.company} width="28" height="28" loading="lazy" />
+            ))}
+          </span>
         </span>
       </li>
       <li>
-        I build developer tools, libraries, Flutter packages, plugins, and products outside of my day job
-        <a href="/open-source">View more<svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+        I build developer tools, libraries, Flutter packages, plugins, and products outside of my day job{' '}
+        <a href="/open-source">open source<svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
       </li>
       <li>
         I write a pretty smart newsletter called <a href="/writing">Writing<svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
